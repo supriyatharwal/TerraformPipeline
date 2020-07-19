@@ -1,6 +1,5 @@
 variable "name" {}
-
-variable "env" {}
+variable "instancetype" {}
 
 provider "aws" {
   profile = "default"
@@ -9,7 +8,7 @@ provider "aws" {
 
 resource "aws_instance" "ec2example" {
   ami = "ami-00eb20669e0990cb4"
-  instance_type = "t2.micro"
+  instance_type = "${var.instancetype}"
 
   tags = {
       Name = "${var.name}"
